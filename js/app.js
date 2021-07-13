@@ -13,29 +13,12 @@
  *
  */
 
-/**
- * Define Global Variables
- *
- */
-
 // Global variable for the navigation to append my li as a child element
 const navMenu = document.querySelector('#navbar__list');
 // Global variable to loop over
 const sections = document.getElementsByTagName('section');
-
+// Global variable for the "back to top" button
 const toTopBtn = document.getElementById('toTop');
-
-/**
- * End Global Variables
- * Start Helper Functions
- *
- */
-
-/**
- * End Helper Functions
- * Begin Main Functions
- *
- */
 
 // build the nav
 
@@ -56,6 +39,7 @@ function navBar() {
 
 window.addEventListener('scroll', function () {
   for (let section of sections) {
+    // using an if/else statement with my desired min/max values taken from .getBoundingClientRect().top
     if (
       section.getBoundingClientRect().top < 350 &&
       section.getBoundingClientRect().top > -250
@@ -67,7 +51,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// Build menu
+// calling the navBar() to create the navigation
 navBar();
 
 // calling scrollFunction() on scrolling
@@ -76,14 +60,13 @@ window.onscroll = function () {
   scrollFunction();
 };
 
-// adding style rule to show or hide the "back to top" button when scrolling
+// adding style rules to show the "back to top" button when scrolling past 250px
 
 function scrollFunction() {
   if (document.documentElement.scrollTop > 250) {
     toTopBtn.style.display = 'block';
   } else {
     toTopBtn.style.display = 'none';
-    toTopBtn.style.padding = '20px';
   }
 }
 
