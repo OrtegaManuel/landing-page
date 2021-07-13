@@ -21,6 +21,10 @@ body {
   color: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Typeography General*/
 h1 {
   font-family: 'Fira Sans', sans-serif;
@@ -271,9 +275,4 @@ section.your-active-class .landing__container::after {
   padding: 20px;
   border: 1px solid #435361;
   border-radius: 50%;
-}
-
-#toTop:hover {
-  font-size: 2rem;
-  transition: 0.2s ease-out;
 }
