@@ -70,8 +70,8 @@ function scrollFunction() {
   }
 }
 
-// add click event listener with smooth back to top scrolling
+// add click event listener to scroll back to top
 
 toTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0 });
 });
