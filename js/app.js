@@ -23,6 +23,8 @@ const navMenu = document.querySelector('#navbar__list');
 // Global variable to loop over
 const sections = document.getElementsByTagName('section');
 
+const toTopBtn = document.getElementById('toTop');
+
 /**
  * End Global Variables
  * Start Helper Functions
@@ -55,8 +57,8 @@ function navBar() {
 window.addEventListener('scroll', function () {
   for (let section of sections) {
     if (
-      section.getBoundingClientRect().top < 471 &&
-      section.getBoundingClientRect().top > -295
+      section.getBoundingClientRect().top < 350 &&
+      section.getBoundingClientRect().top > -250
     ) {
       section.classList.add('your-active-class');
     } else {
@@ -65,15 +67,28 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// Scroll to anchor ID using scrollTO event
-
-/**
- * End Main Functions
- * Begin Events
- *
- */
-
 // Build menu
 navBar();
 
-// Set sections as active
+// calling scrollFunction() on scrolling
+
+window.onscroll = function () {
+  scrollFunction();
+};
+
+// adding style rule to show or hide the "back to top" button when scrolling
+
+function scrollFunction() {
+  if (document.documentElement.scrollTop > 250) {
+    toTopBtn.style.display = 'block';
+  } else {
+    toTopBtn.style.display = 'none';
+    toTopBtn.style.padding = '20px';
+  }
+}
+
+// add click event listener with smooth back to top scrolling
+
+toTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
