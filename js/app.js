@@ -52,6 +52,19 @@ function navBar() {
 
 // Add class 'active' to section when near top of viewport
 
+window.addEventListener('scroll', function () {
+  for (let section of sections) {
+    if (
+      section.getBoundingClientRect().top < 471 &&
+      section.getBoundingClientRect().top > -295
+    ) {
+      section.classList.add('your-active-class');
+    } else {
+      section.classList.remove('your-active-class');
+    }
+  }
+});
+
 // Scroll to anchor ID using scrollTO event
 
 /**
