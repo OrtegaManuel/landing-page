@@ -102,10 +102,6 @@ section {
   color: whitesmoke;
 }
 
-.nav__links:hover {
-  color: orange;
-}
-
 /* Active Section Styles */
 
 .your-active-class {
