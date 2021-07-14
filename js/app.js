@@ -20,22 +20,32 @@ const sections = document.getElementsByTagName('section');
 // Global variable for the "back to top" button
 const toTopBtn = document.getElementById('toTop');
 
-// build the nav
+// building the nav without href attribute
 
 function navBar() {
   for (let section of sections) {
-    // creating li element and storing it to the listElement variable
+    // creating <li> element
     let listElement = document.createElement('li');
 
-    // adding HTML to the li element using template literals to create the anchors
-    listElement.innerHTML = `<a href="#${section.id}" class="nav__links">${section.dataset.nav}</a>`;
+    // adding attributes to the the <li> element
+    listElement.className = 'nav__links';
+    listElement.dataset.nav = section.id;
 
-    // appending the li element as a child to the DOM element stored in the global navMenu variable
+    // adding text to the <li> element using the value of the data-nav attribute of the section
+    listElement.innerText = section.dataset.nav;
+
+    // appending the <li> element as a child to the DOM element stored in the global navMenu variable
     navMenu.appendChild(listElement);
+
+    // adding click EventListener for smooth scrolling
+    listElement.addEventListener('click', () => {
+      section.scrollIntoView({ behavior: 'smooth' });
+    });
   }
 }
 
 // Add class 'active' to section when near top of viewport
+// Added class to highlight navigation link for the current section in viewport
 
 window.addEventListener('scroll', function () {
   for (let section of sections) {
@@ -45,8 +55,14 @@ window.addEventListener('scroll', function () {
       section.getBoundingClientRect().top > -250
     ) {
       section.classList.add('your-active-class');
+      document
+        .querySelector('li[data-nav="' + section.id + '"]')
+        .classList.add('current');
     } else {
       section.classList.remove('your-active-class');
+      document
+        .querySelector('li[data-nav="' + section.id + '"]')
+        .classList.remove('current');
     }
   }
 });
@@ -70,8 +86,8 @@ function scrollFunction() {
   }
 }
 
-// add click event listener to scroll back to top
+// add click event listener to scroll back to top and added smooth scrolling
 
 toTopBtn.addEventListener('click', () => {
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });

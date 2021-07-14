@@ -21,10 +21,6 @@ body {
   color: #fff;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 /* Typeography General*/
 h1 {
   font-family: 'Fira Sans', sans-serif;
@@ -275,4 +271,10 @@ section.your-active-class .landing__container::after {
   padding: 20px;
   border: 1px solid #435361;
   border-radius: 50%;
+}
+
+/* current link highlighting styles */
+
+.current {
+  color: orange;
 }
